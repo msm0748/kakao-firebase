@@ -20,7 +20,7 @@ export default function KakaoAuth() {
         params: {
           grant_type: "authorization_code",
           client_id: process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY,
-          redirect_uri: `${process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URL}/oauth/kakao`,
+          redirect_uri: `${process.env.NEXT_PUBLIC_REDIRECT_URL}/oauth/kakao`,
           code: code,
         },
       });
@@ -39,7 +39,6 @@ export default function KakaoAuth() {
         method: "post",
         data: { access_token: access_token },
       });
-      console.log("asdfasf");
       signInWithCustomToken(auth, result)
         .then(() => {
           router.push("/");
