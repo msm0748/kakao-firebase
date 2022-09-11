@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { signInWithCustomToken } from "firebase/auth";
 import { auth } from "../../../fBase";
 
-export default function Naver() {
+export default function NaverAuth() {
   const router = useRouter();
   useEffect(() => {
     const params = new URL(window.location.href).searchParams;
@@ -29,8 +29,8 @@ export default function Naver() {
           const errorCode = error.code;
           alert(errorCode);
         });
-    } catch (e) {
-      console.log(e);
+    } catch (err) {
+      console.log(err);
     }
   };
 }

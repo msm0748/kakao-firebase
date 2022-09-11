@@ -29,19 +29,12 @@ const getAccessToken = async (state, code) => {
   }
 };
 
-const getUserInfo = async (access_token) => {
-  try {
-    const {
-      data: { response },
-    } = await axios.get("https://openapi.naver.com/v1/nid/me", {
-      headers: {
-        Authorization: `Bearer ${access_token}`,
-      },
-    });
-    return response;
-  } catch (e) {
-    console.log(e);
-  }
+const getUserInfo = (access_token) => {
+  return axios.get("https://openapi.naver.com/v1/nid/me", {
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+    },
+  });
 };
 
 async function updateOrCreateUser(userId, email, displayName, photoURL) {
